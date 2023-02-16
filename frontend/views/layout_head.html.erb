@@ -4,14 +4,14 @@
     <% if ['edit', 'new', 'create'].include?(controller.action_name) %>
         <script>
         $(function () {
-          new AccessionIdentifiers(<%= ['new', 'create'].include?(controller.action_name) %>).init();
+          new AccessionIdentifiers(<%= ['new', 'create'].include?(controller.action_name) %>, '<%= AppConfig[:aspace_identifiers_behavior] %>').init();
         });
         </script>
     <% end %>
 
 <% end %>
 
-<% if controller.controller_name == 'resources' %>
+<% if controller.controller_name == 'resources' && AppConfig[:aspace_identifiers_enable_resources] %>
     <%= javascript_include_tag "#{@base_url}/assets/resource_identifiers.js" %>
 
     <% if ['edit', 'new', 'create'].include?(controller.action_name) %>
@@ -32,10 +32,8 @@
   <%= stylesheet_link_tag "#{@base_url}/assets/four_identifiers.css" %>
 <% end %>
   
-<% if controller.controller_name == 'yale_accessions' %>
+<% if controller.controller_name == 'aspace_identifiers' %>
 	<%= javascript_include_tag "#{@base_url}/assets/tagmanager/tagmanager.js" %>
 	<%= javascript_include_tag "#{@base_url}/assets/department_list.js" %>
 	<%= stylesheet_link_tag "#{@base_url}/assets/tagmanager/tagmanager.css" %>
 <% end %>
-
-<%= javascript_include_tag "#{@base_url}/assets/repository_menu.js" %>

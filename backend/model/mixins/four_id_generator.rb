@@ -9,7 +9,6 @@ module FourIdGenerator
     end 
   end
 
-
   def self.inside_import?
     # Requests through the web UI will come in with a high priority, whereas
     # migrations and batch imports will not.
@@ -21,9 +20,6 @@ module FourIdGenerator
     date = Date.parse(json['accession_date'])
     "#{date.month > 6 ? date.year + 1 : date.year}"
   }
-
-
-
 
   @sequence_generator = lambda {|json|
 
@@ -47,21 +43,17 @@ module FourIdGenerator
     "import"
   }
 
-
   def self.accession_fy_generator
     @accession_fy_generator
   end
-
 
   def self.sequence_generator
     @sequence_generator
   end
 
-
   def self.import_generator
     @import_generator
   end
-
 
   module ClassMethods
   end

@@ -1,4 +1,4 @@
-var DEPARTMENT_CODES = [];
+const DEPARTMENT_CODES = [];
 
 $(function () {
   //Init code list in tagmanager
@@ -7,7 +7,7 @@ $(function () {
     hiddenTagListName: 'department_codes',
     });
 
-  var bindButtonStateToList = function() {
+  const bindButtonStateToList = function() {
     $("input[name='department_codes']").change(function() {
       $('#department_codes_save').removeClass('disabled');
     });
@@ -15,7 +15,7 @@ $(function () {
 
   bindButtonStateToList();
 
-  var $updateListForm = $(".department_list_update");
+  const $updateListForm = $(".department_list_update");
 
   $updateListForm.ajaxForm({
     dataType: "json",

@@ -1,7 +1,11 @@
-class YaleAccessionsController < ApplicationController
+class AspaceIdentifiersController < ApplicationController
 
   set_access_control "manage_repository" => [:department_list_update]
-  set_access_control "view_repository" => [:department_list]
+  set_access_control "view_repository" => [:department_list, :index]
+
+  def index
+    department_list
+  end
 
   def department_list
     @department_list = JSONModel(:department_list).all[0]
