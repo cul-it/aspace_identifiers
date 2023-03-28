@@ -21,6 +21,15 @@ module FourIdGenerator
     "#{date.month > 6 ? date.year + 1 : date.year}"
   }
 
+  @id_2_generator = lambda {|json|
+    sequence_name = "yale_accession_#{json['id_0']}_#{json['id_1']}"
+
+    seq = Sequence.get(sequence_name)
+    seq = Sequence.get(sequence_name) if seq < 1
+
+    seq.to_s.rjust(4, '0')
+  }
+
   @sequence_generator = lambda {|json|
 
     type = json["jsonmodel_type"]
@@ -49,6 +58,10 @@ module FourIdGenerator
 
   def self.sequence_generator
     @sequence_generator
+  end
+
+  def self.id_2_generator
+    @id_2_generator
   end
 
   def self.import_generator
